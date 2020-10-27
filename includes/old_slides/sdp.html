@@ -1,0 +1,213 @@
+
+
+
+<!-- <section> -->
+<!-- <h1>Why SDPs?</h1> -->
+<!-- <ul> -->
+<!-- <li class="fragment">Generalizes LPs, SOCPs...</li> -->
+
+<!-- <li class="fragment">Computational properties -->
+
+<!--   <p><small class="fragment"> -->
+<!-- \begin{equation}\label{eq:intro-primal-sdp} -->
+<!-- \begin{array}{ll@{}ll} -->
+<!-- \underset{X \succeq 0}{\min} &  \langle C, X \rangle  & \\ -->
+<!--   \text{subject to}&  \langle A_i, X \rangle = b_i, \quad i=1,\ldots,m, -->
+<!--   \end{array} -->
+<!--   \end{equation} -->
+<!--   </small> -->
+<!-- <small class="fragment"> -->
+<!--  \begin{equation} -->
+<!--   {\Large \ge} \quad \begin{array}{ll@{}ll} -->
+<!--   \underset{x \in \R^n}{\max} &  \langle b, x \rangle  & \\ -->
+<!--   \text{subject to}&  C - \sum_{i=1}^n x_i A_i \succeq 0, -->
+<!--   \end{array} -->
+<!--   \end{equation} -->
+<!--   </small></p> -->
+<!-- </li> -->
+<!-- <li class="fragment">Connections to real algebra have resulted in new approaches in optimization, machine learning, and control. -->
+<!-- <\!-- <ul class="fragment"> -\-> -->
+<!-- <\!-- <li>Semialgebraic optimization</li> -\-> -->
+<!-- <\!-- <li>Analysis and control of DS</li> -\-> -->
+<!-- <\!-- <li>More recently: Learning DS</li> -\-> -->
+<!-- <\!-- </ul> -\-> -->
+<!-- </li> -->
+<!-- </ul> -->
+<!-- </section> -->
+
+
+
+
+<!-- SOS is SDP -->
+<section><h1>Connection to real algebra</h1></section>
+
+
+<section style="text-align: left;">
+  In many applications, our goal is to search over a set of functions
+  that satisfy some nonnegativity conditions.
+
+<ul>
+<li class="fragment">Optimization:
+\(\text{policy}: \text{time} \rightarrow \text{action}\)
+</li>
+
+
+<li class="fragment">Duality: $$\min_{x } f(x) \Leftrightarrow \max_{\gamma \in \mathbb R, \;f(x)- \gamma \ge 0 \; \forall x} \gamma$$  </li>
+<li class="fragment">Analysis of DS $\dot x = f(x)$:
+
+  \[\text{Stability $\Leftrightarrow$ $\exists$ Lyapunov function $V(x)$}\]
+
+</li>
+<li class="fragment">Learning: $f: \mathbb R^n \rightarrow \mathbb R^n$</li>
+</ul>
+</section>
+
+<section>
+  <!-- In algebra, the function class that you care about is poly -->
+  <ul style="list-style-type:none;">
+    <li class="fragment" >$$p(x_1, \ldots, x_n) = \sum_{\alpha_1, \ldots, \alpha_n} p_{\alpha_1, \ldots, \alpha_n} x_1^{\alpha_i} \ldots x_1^{\alpha_n}$$
+  <li class="fragment">  Is $p(x) \ge 0 \quad \forall \in \mathbb R^n$?</li>
+  <li class='fragment'> NP-hard for degrees as small as $4$</li>
+  <li class='fragment'>  $\Uparrow$</li>
+  <li class='fragment'> $p(x) = \sum_i q_i^2(x)$</li>
+  <li class='fragment'>Can be cast as an SDP</li>
+    <li class='fragment'>$\iff \exists Q \succeq 0 \quad p(x) = m^TQm$ 
+      <p><small>with $m = (1, x_1, \ldots, x_n, x_1x_2, \ldots, x_n^d)^T$</small></p></li>
+  <li class='fragment'>This is true even if some coefficients of $p$ are unknown</li>
+</ul>
+</section>
+
+
+<section>
+<ul style="list-style-type:none;">
+  <li>Is $p(x) > 0 \quad \forall x \in \mathbb \Omega$?</li>
+  <li class='fragment'>$\Omega = \{x \in \mathbb R^n \; | \; g_1(x) \ge 0, \ldots, g_m(x) \ge 0\}$</li>
+  <li>\[ \; \]</li>
+  <!-- <li class='fragment'>  $\Updownarrow$</li> -->
+  <li class='fragment'>Putinar's theorem (under Archimedean condition)</li>
+  <li class='fragment'>$\exists$ sos polynomials $\sigma_0, \ldots, \sigma_m$ s.t. $$p(x) = \sigma_0(x) + \sigma_1(x) g_1(x) + \ldots + \sigma_m(x) g_m(x)$$</li>
+  <!-- <li class='fragment'>$\Uparrow$ trivial (modulo strict vs non strict)</li> -->
+
+  <li class='fragment'>Search over $\sigma_i$ is an SDP when we bound the degree
+</ul>
+
+<p class="fragment">SOS-approach = This pipeline</p>
+</section>
+
+<!-- <section> -->
+<!--   <h6>SDP approach: </h6> -->
+
+
+<!--   <ul> -->
+<!--     <li class='fragment'>  Search for polynomials that satisfy some non negativity condition</li> -->
+<!--     <li class='fragment'>  Replace nonnegativity with existence of Putinar-type certificate</li> -->
+<!--   </ul> -->
+
+  
+<!-- </section> -->
+
+
+
+
+
+
+</section>
+
+
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part0.mp4" ></section> -->
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part1.mp4" ></section> -->
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part2.mp4" ></section> -->
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part3.mp4" ></section> -->
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part4.mp4" ></section> -->
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part5.mp4" ></section> -->
+<!-- <section data-background-video="videos/Intro/sos_is_sdp-part6.mp4" ></section> -->
+
+
+
+<section style="text-align: left;">
+  <p>SDP ===(via SOS)==> Search over subsets of fcts allows applications in:</p>
+<p>
+<ul>
+<li>Optimization</li>
+<li>Analysis of DS</li>
+<li>Learning DS</li>
+</ul>
+</p>
+
+<h5 class="fragment">This thesis:</h5>
+<ul>
+
+<li class="fragment">Advance these connections further</li>
+<li class="fragment">Study the power and limitations of SDP-based approaches.</li>
+<li class="fragment">Contribution: theoretical and algorithmic</li>
+</ul>
+</section>
+
+
+
+
+<!-- <section> -->
+<!--   <p> -->
+<!--   Primal: -->
+<!-- \begin{equation}\label{eq:intro-primal-sdp} -->
+<!-- \begin{array}{ll@{}ll} -->
+<!-- \underset{X \succeq 0}{\min} &  \langle C, X \rangle  & \\ -->
+<!--   \text{subject to}&  \langle A_i, X \rangle = b_i, \quad i=1,\ldots,n, -->
+<!--   \end{array} -->
+<!--   \end{equation} -->
+<!--   </p> -->
+<!-- <p class="fragment"> -->
+<!-- Dual: -->
+<!--   \begin{equation} -->
+<!-- \begin{array}{ll@{}ll} -->
+<!--   \underset{x \in \R^n}{\max} &  \langle b, x \rangle  & \\ -->
+<!--   \text{subject to}&  C - \sum_{i=1}^n x_i A_i \succeq 0, -->
+<!--   \end{array} -->
+<!--   \end{equation} -->
+<!-- </p> -->
+<!-- </section> -->
+
+
+
+
+
+<!-- <section> -->
+<!--   <p>(To be updated)</p> -->
+<!--   SDP is the state of the art in -->
+
+<!--   Combinatorics: -->
+<!--  <ul> -->
+<!--     <li> -->
+<!--       Max-CUT</li> -->
+<!--     <li>Only poly time algorithm for finding max stable set in perfect graphs</li> -->
+<!--     <li>Kissing Problem</li> -->
+<!--  </ul> -->
+
+
+<!--   Geometry: -->
+<!-- <ul> -->
+<!--     <li>Ellipsoid of minimum volume</li> -->
+<!-- </ul> -->
+
+<!-- Signal processing / machine learning -->
+<!-- <ul> -->
+<!--     <li>Tensor decomposition</li> -->
+<!--     <li>Positive definite matrix completion</li> -->
+<!-- </ul> -->
+  
+<!-- </section> -->
+<!-- <section> -->
+<!--   <p>(To be updated)</p> -->
+
+<!--   Today: Power and limitation of SDPs for  -->
+<!--   <ul> -->
+<!--     <li>Polynomial optimization.</li> -->
+<!--     <li>DS.</li> -->
+<!--   </ul> -->
+
+<!--   <p>Two fields that have historically motivated SDPs</p> -->
+<!--   <p>not so much applying SDps to specific problem, but analyzing the power and limitations of SDPs</p> -->
+
+<!--   <p>For positive results: Emphasis on computational efficiency.</p> -->
+
+<!-- </section> -->

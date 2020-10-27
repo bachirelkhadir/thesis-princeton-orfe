@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Bachir El Khadir FPO - Agust 2020</title>
+
+    <!-- <title>Bachir El Khadir Final Public Oral Examination - Agust 2020</title> -->
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/bachir.css" id="theme">
+    <link rel="stylesheet" href="dist/theme/theorem.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    
+    <!-- <script src="//cdn.jsdelivr.net/g/reveal.js,zepto"></script> -->
+    <script src="myjs/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="myjs/jquery.svg.css"> 
+    <script type="text/javascript" src="myjs/jquery.svg.js"></script>
+
+	</head>
+	<body>
+	  <div class="reveal">
+	    <div class="slides" style="width: 1280px; height: 720px;">
+              <section data-external="includes/front_page.html">Front Page HERE</section>
+
+
+
+              <!-- <section id="sec-story" data-external="includes/story_hilbert_lyap.html">Minkowski FPO</section>  -->
+              <!-- <section data-external="includes/sos_is_sdp.html">SOS is SDP</section>  -->
+              <section data-external="includes/intro.html">Intro</section> 
+              <section data-external="includes/outline.html">Outline</section> 
+
+              
+              <!-- <section data-external="includes/intro_applications.html">Intro application here</section>  -->
+              <section data-external="includes/tv_sdp.html">TV-SDP here</section>
+
+              <section data-external="includes/conv_vs_sos.html">Conv vs SOS</section> 
+              <section data-external="includes/lyapunov_scene.html">Lyapunov Scene</section> 
+              <section data-external="includes/ds.html">Dynamical systems here</section> 
+              <section data-external="includes/l4dc.html">L4DC here</section> 
+              <section data-external="includes/thank_you.html">Thank you!</section> 
+
+              <section data-external="includes/backup_slides.html">Backup Slides</section> 
+	    </div>
+	  </div>
+
+
+	  <script src="dist/reveal.js"></script>
+	  <script src="plugin/notes/notes.js"></script>
+	  <script src="plugin/markdown/markdown.js"></script>
+	  <script src="plugin/highlight/highlight.js"></script>
+          <script src="plugin/math/math.js"></script>
+  <script>
+
+    
+    ;(function(){
+
+        Reveal.initialize({autoPlayMedia: true,   
+                           transition: 'none', 
+                           backgroundTransition: 'none',
+                           // The "normal" size of the presentation,
+                           // aspect ratio will be preserved when the
+                           // presentation is scaled to fit different
+                           // resolutions. Can be specified using
+                           // percentage units.
+                           width: 1280,
+                           height: 720,
+
+                           // Factor of the display size that should
+                           // remain empty around the content
+                           margin: 0.04,
+
+                           // Bounds for smallest/largest possible
+                           // scale to apply to content
+                           minScale: 0.2,
+                           maxScale: 2.0,
+                           slideNumber: slide => {
+                               var curr_slide = Reveal.getSlidePastCount( slide );
+                               var num_slides = Reveal.getTotalSlides();
+                               var frac = curr_slide / num_slides;
+                               // make page cout go faster at begining
+                               frac = Math.sqrt(frac);
+                               // Ignore numbering of vertical slides
+                               return [ Math.round(frac * 100) + '%' ];
+                           },
+
+
+                           math: {
+                               mathjax: 'myjs/MathJax-2.7.7/MathJax.js',
+                               config: 'TeX-AMS_HTML-full',
+                               TeX: { Macros: { R: "{\\mathbb R}"} }
+                           },
+                           plugins:[RevealMath], 
+                           dependencies: [
+                               { 
+                                   src: 'plugin/external/external.js', 
+                                   condition: function() { 
+                                       return !!document.querySelector( '[data-external],[data-external-replace]' ); 
+                                   }},
+                               { src: 'https://d3js.org/d3.v4.min.js' },
+		               { src: 'node_modules/reveal.js-d3js/d3js.js' },
+                           ], 
+                           history: true,
+                           navigationMode: 'linear',
+                          });
+
+
+        
+
+    })();
+
+    // On slide change
+    function every_slide() {
+        // Slow videos
+        slow_videos = $('.slow-video video');
+
+        // control video speed        
+        for(i=0; i < slow_videos.length; i ++) {
+            slow_videos[i].playbackRate = .6;
+        }
+
+        // Speed up videos
+        fast_videos = $('.fast-video video');
+
+        // control video speed        
+        for(i=0; i < fast_videos.length; i ++) {
+            fast_videos[i].playbackRate = 3;
+        }
+    }
+
+
+    Reveal.on( 'slidechanged', event => {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        every_slide();
+    } );
+    
+  </script>
+
+	</body>
+</html>

@@ -1,0 +1,20 @@
+.reveal .theorem {
+  display: block;
+  text-align: left;
+  font-style: normal;
+  border-left-style: solid;
+  border-left-color: orange;
+  padding-left: 20px;
+  border-left-width: 5px;
+}
+
+.reveal .theorem:before {
+  content: "Theorem. ";
+  font-weight: bold;
+  color: orange;
+  font-style: normal;
+}
+
+.reveal .theorem[name]:before {
+  content: "Theorem (" attr(name) ") ";
+}
